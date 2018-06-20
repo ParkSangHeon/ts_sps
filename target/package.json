@@ -1,0 +1,46 @@
+{
+  "name": "typescript-nodejs",
+  "version": "1.0.0",
+  "description": "typescript for nodejs standard project",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --require ts-node/register src/test/**/*.test.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fingerplus/standard-project-structure.git"
+  },
+  "author": "fingerplus",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/fingerplus/standard-project-structure/issues"
+  },
+  "homepage": "https://github.com/fingerplus/standard-project-structure#readme",
+  "devDependencies": {
+    "@types/chai": "^4.1.2",
+    "@types/mocha": "^2.2.48",
+    "@types/node": "^9.4.6",
+    "ansi-colors": "^1.1.0",
+    "babel-core": "^6.26.0",
+    "babel-preset-node6": "^11.0.0",
+    "babel-register": "^6.26.0",
+    "chai": "^4.1.2",
+    "del": "^3.0.0",
+    "fancy-log": "^1.3.2",
+    "gulp": "^3.9.1",
+    "gulp-install": "^1.1.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sequence": "^1.0.0",
+    "gulp-typescript": "^4.0.1",
+    "mocha": "^5.0.1",
+    "serverless-gulp": "^1.0.10",
+    "serverless-plugin-git-variables": "^2.0.0",
+    "sinon": "^4.4.2",
+    "ts-node": "^5.0.0",
+    "tslint": "^5.9.1",
+    "tslint-config-airbnb": "^5.7.0",
+    "typescript": "^2.7.2",
+    "yargs": "^11.0.0"
+  },
+  "dependencies": {}
+}

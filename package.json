@@ -1,0 +1,52 @@
+{
+  "name": "nodejs-typescript-express",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./dist/server",
+    "build": "npm run clean && npm run build-ts && npm run static-copy",
+    "build-ts": "gulp build",
+    "static-copy": "gulp static-copy",
+    "clean": "gulp clean"
+  },
+  "dependencies": {
+    "body-parser": "~1.15.2",
+    "connect-flash": "^0.1.1",
+    "connect-redis": "^3.3.2",
+    "connect-requestid": "^1.1.0",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.2.0",
+    "express": "~4.14.0",
+    "express-session": "^1.15.6",
+    "express-validator": "^4.3.0",
+    "jade": "~1.11.0",
+    "marko": "^4.7.2",
+    "morgan": "~1.7.0",
+    "passport": "^0.4.0",
+    "serve-favicon": "~2.3.0",
+    "types-installer": "^1.4.0"
+  },
+  "devDependencies": {
+    "@types/body-parser": "^1.16.8",
+    "@types/connect-flash": "^0.0.34",
+    "@types/connect-redis": "^0.0.7",
+    "@types/cookie-parser": "^1.4.1",
+    "@types/debug": "^0.0.30",
+    "@types/express": "^4.0.39",
+    "@types/express-session": "^1.15.6",
+    "@types/express-validator": "^3.0.0",
+    "@types/gulp": "^4.0.5",
+    "@types/gulp-typescript": "^2.13.0",
+    "@types/jade": "^0.0.30",
+    "@types/morgan": "^1.7.35",
+    "@types/passport": "^0.4.1",
+    "@types/serve-favicon": "^2.2.30",
+    "@types/through2": "^2.0.33",
+    "@types/typescript": "^2.0.0",
+    "gulp": "^3.9.1",
+    "gulp-clean": "^0.3.2",
+    "gulp-typescript": "^3.2.3",
+    "through2": "^2.0.3",
+    "typescript": "^2.6.2"
+  }
+}

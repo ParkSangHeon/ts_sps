@@ -1,0 +1,100 @@
+service: typescript-examples
+
+# frameworkVersion: ">=1.15.3"
+
+provider:
+  name: aws
+
+# you can overwrite defaults here
+  stage: ${opt:stage, self:custom.defaultStage}
+  profile: serverless
+  region: ${opt:region, self:custom.defaultRegion}
+  regionName: ${self:custom.regionMap.${self:provider.region}}
+
+# you can overwrite defaults in function setting
+# NOTE: 일단 공통으로 적용하고 필요할 경우 모니터링해서 개별 적용
+  runtime: nodejs6.10
+  memorySize: 128
+  timeout: 10
+
+# you can define service wide environment variables here
+  environment:
+    NODE_ENV: ${self:custom.envMap.${self:provider.stage}}
+
+  vpc: ${self:custom.vpc.${self:provider.stage}}
+
+  versionFunctions: true
+
+  deploymentBucket: fingercodedeploybucket
+  # name:
+  #    serverSideEncryption: AES256
+
+  # you can add statements to the Lambda function's IAM Role here
+  role: arn:aws:iam::077546035184:role/videotag-api-lambda-function
+
+custom:
+  defaultStage: dev
+  defaultRegion: ap-northeast-2
+  envMap:
+    dev: development
+    prd: production
+  regionMap:
+    ap-northeast-2: seoul
+  vpc:
+    dev:
+      securityGroupIds:
+        - sg-59135331
+      subnetIds:
+        - subnet-b64ea8de
+        - subnet-f44b17b9
+    prd:
+      securityGroupIds:
+        - sg-0fb3f867
+      subnetIds:
+        - subnet-d27a9aba
+        - subnet-7b3d6336
+  vcsInfo: VCS Info - ${git:branch} / ${git:sha1}
+
+
+# you can add packaging information here
+package:
+  individually: true
+  include:
+    - commons/**
+    - node_modules/**
+  exclude:
+    - hello-rest/**
+    - hello-world/**
+
+plugins:
+  - serverless-plugin-git-variables
+
+functions:
+  helloWorld:
+    handler: hello-world/index.handler
+    name: ${self:provider.stage}-lambda-${self:provider.regionName}-${self:service}-helloworld
+    description: hello world ${self:custom.vcsInfo}
+    package:
+      include:
+        - hello-world/**
+
+  # Server API
+  helloRest:
+    handler: hello-rest/index.handler
+    name: ${self:provider.stage}-lambda-${self:provider.regionName}-${self:service}-hellorest
+    description: hello rest ${self:custom.vcsInfo}
+    events:
+      - http:
+          path: /hello-rest
+          method: GET
+    package:
+      include:
+        - hello-rest/**
+
+# you can add CloudFormation resource templates here
+resources:
+  Resources:
+    ApiGatewayRestApi:
+      Type: AWS::ApiGateway::RestApi
+      Properties:
+        Name: ${self:provider.stage}-apigw-${self:provider.regionName}-${self:service}

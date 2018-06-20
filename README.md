@@ -1,17 +1,18 @@
-# standard-project-structure
+# nodejs-typescript-express
 
 ## 목적
-개발에서 사용하는 표준 프로젝트(라이브러리, 폴더구조 및 구성)를 생성하여 공유하고 좀더 손쉽게 표준 프로젝트를 이용해 개발을 시작할수 있도록 하고 사용하는 라이브러리와 폴더구성등을 공통적으로 사용하는 목적에 있다.
+Typescript, Express를 이용한 프로젝트 초기 구주 설정.
 
-## 필수항목
-* 폴더구조 정리
-* 라이브러리 정리
-* 간단한 테스트 및 설명(README.md)
+## 폴더구조
+* src
+* dist
 
-## 표준화 리스트를 추가하는 방법
-    // orphan branch 로 생성
-    checkout --orphan NEW_BRANCH_NAME
 
-## 표준화 리스트
-* typescript nodejs
+## 라이브러리
+* Express
+* Marko : Marko 템플릿이 typescript를 지원하지 않음. 따라서 빌드시에 marko호출관련 코드에 오류 메세지가 나타나나 구동에 이상은 없음. 추후에 해결 필요.
+
+## 
+* 빌드 : npm run build
+* 구동 : npm start
 
